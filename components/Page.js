@@ -1,11 +1,10 @@
 import styled, { createGlobalStyle } from "styled-components";
-import Cart from "./Cart";
 import Header from "./Header";
 
 const GlobalStyles = createGlobalStyle`
 @font-face {
-  font-family: 'radnika_next';
-  src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');
+  font-family: 'signika_regular';
+  src: url('/static/Signika-Regular.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
 }
@@ -33,7 +32,7 @@ const GlobalStyles = createGlobalStyle`
    margin: 0;
    line-height: 2 ;
    font-size: 1.5rem;
-   font-family: 'radnika_next', ---apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   font-family: 'signika_regular', ---apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
  }
 
  a {

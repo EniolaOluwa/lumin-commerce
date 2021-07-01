@@ -1,49 +1,37 @@
-import Link from "next/link";
-import styled from "styled-components";
 import NavBar from "./NavBar";
-
-const Logo = styled.h1`
-  background: red;
-  font-size: 4rem;
-  margin-left: 2rem;
-  position: relative;
-  z-index: 2;
-  transform: skew(-7deg);
-  a {
-    color: white;
-    text-transform: uppercase;
-    padding: 0.5rem 1rem;
-  }
-`;
-
-const HeaderStyles = styled.header`
-  .bar {
-    display: grid;
-    align-items: stretch;
-    justify-content: space-between;
-    grid-template-columns: auto 1fr;
-    border-bottom: 10px solid var(--black, black);
-  }
-
-  .sub-bar {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    border-bottom: 1px solid var(--black, black);
-  }
-`;
+import { Box, Image, Link, Flex } from "@chakra-ui/react";
 
 export default function Header() {
   return (
-    <HeaderStyles>
-      <div className="bar">
-        <Logo>
-          <Link href="/">Lumin</Link>
-        </Logo>
-        <NavBar />
-      </div>
-      <div className="sub-bar">
-        <p>search</p>
-      </div>
-    </HeaderStyles>
+    <Flex
+      bg="white"
+      zIndex="sticky"
+      boxShadow="0 2px 3px -3px grey"
+      w="100%"
+      justifyContent="space-between"
+      p={4}
+      color="black"
+      position="sticky"
+      top={0}
+      mb={12}
+    >
+      <Flex flexDirection="row" width="lg" justifyContent="space-between">
+        <Box boxSize="xs" width="163px" height="44px" pl={4} pr={4}>
+          <Image src="/logo.png" height="100%" alt="Lumin Logo" />
+        </Box>
+        <Flex width="sm" alignItems="center" justifyContent="space-between">
+          <Link _hover={{ color: "#3d5b57", textDecoration: "none" }} href="#">
+            Shop
+          </Link>
+          <Link _hover={{ color: "#3d5b57", textDecoration: "none" }} href="#">
+            Help
+          </Link>
+          <Link _hover={{ color: "#3d5b57", textDecoration: "none" }} href="#">
+            Blog
+          </Link>
+        </Flex>
+      </Flex>
+      <NavBar />
+    </Flex>
   );
 }

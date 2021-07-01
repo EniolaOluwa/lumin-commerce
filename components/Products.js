@@ -1,6 +1,6 @@
 import { useQuery, gql } from "@apollo/client";
-import styled from "styled-components";
 import Product from "./Product";
+import { Grid } from "@chakra-ui/react";
 
 export const ALL_PRODUCTS_QUERY = gql`
   query ALL_PRODUCTS_QUERY {
@@ -22,24 +22,17 @@ export const ALL_PRODUCTS_QUERY = gql`
   }
 `;
 
-const ProductListStyles = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
-`;
-
 const Products = () => {
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY);
-  console.log(data, error, loading);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error.message}</p>;
 
   return (
-    <ProductListStyles>
+    <Grid templateColumns="repeat(3, 1fr)" gap={0} bg="#E2E6E3" padding="20px 0">
       {data.products.map((product) => (
         <Product product={product} key={product.id} />
       ))}
-    </ProductListStyles>
+    </Grid>
   );
 };
 

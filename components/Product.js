@@ -1,7 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
-import ProductStyles from "./styles/ProductStyles";
-import TitleStyles from "./styles/TitleStyles";
 import formatMoney from "../lib/formatMoney";
+import { Flex, Img, Text, Box, Button } from "@chakra-ui/react";
 import { useCartDispatch } from "../lib/cartContext";
 
 const Product = ({ product }) => {
@@ -9,16 +7,38 @@ const Product = ({ product }) => {
   const showDetails = () => dispatch({ type: "show-product-details", product });
 
   return (
-    <ProductStyles>
-      <img src={product?.image_url} alt={product.title} />
-      <TitleStyles>{product.title}</TitleStyles>
-      <span className="price">{formatMoney(product.price)}</span>
-      <div className="buttonList">
-        <button type="button" onClick={showDetails}>
-          Add To Cart
-        </button>
-      </div>
-    </ProductStyles>
+    <Flex h="lg" flexDirection="column" alignItems="center" padding="3rem 2rem">
+      <Img
+        objectFit="contain"
+        width="xs"
+        height="xs"
+        src={product?.image_url}
+        alt={product.title}
+      />
+      <Flex flexDirection="column" textAlign="center" pt="3">
+        <Text fontSize="xl" fontWeight="normal" margin="0.5rem 0" lineHeight="1.5">
+          {product.title}
+        </Text>
+        <Text fontSize="1.1rem" lineHeight="1.5">
+          {formatMoney(product.price)}
+        </Text>
+        <Box>
+          <Button
+            colorScheme="teal"
+            onClick={showDetails}
+            rounded="none"
+            width="xs"
+            minHeight="42px"
+            bg="#4B5548"
+            mt="0.5rem"
+            _hover={{ bg: "#2B2E2B" }}
+            fontWeight="bold"
+          >
+            Add To Cart
+          </Button>
+        </Box>
+      </Flex>
+    </Flex>
   );
 };
 
