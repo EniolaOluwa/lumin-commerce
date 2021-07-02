@@ -6,12 +6,12 @@ import { Box, Img, Button, Flex, Text, IconButton } from "@chakra-ui/react";
 const CartItem = ({ item }) => {
   const dispatch = useCartDispatch();
 
-  const increaseQty = (product) => {
-    dispatch({ type: "increase-product-quantity", product });
+  const increaseQty = (cid) => {
+    dispatch({ type: "increase-product-quantity", cid });
   };
 
-  const decreaseQty = (product) => {
-    dispatch({ type: "decrease-product-quantity", product });
+  const decreaseQty = (cid) => {
+    dispatch({ type: "decrease-product-quantity", cid });
   };
 
   const deleteItem = (id) => {
@@ -21,7 +21,7 @@ const CartItem = ({ item }) => {
   return (
     <Flex
       bg="white"
-      height="135px"
+      minHeight="130px"
       width="100%"
       maxWidth="550px"
       key={item.id}
@@ -55,13 +55,19 @@ const CartItem = ({ item }) => {
             {item["Skin Type"] && item["Skin Type"]}
             {item["Age Bracket"] != null ? ` | ${item["Age Bracket"]}` : ""}
           </Text>
-          <Flex alignItems="center" border="1px solid grey" width="6.5rem">
+          {item.Frequency && <Text fontSize="10px">{item.Frequency}</Text>}
+          <Flex
+            alignItems="center"
+            border="1px solid grey"
+            maxWidth="8rem"
+            width="6.5rem"
+          >
             <Button
               bg="white"
               outline="none"
               _hover={{ bg: "white" }}
               _focus={{ outline: "transparent" }}
-              onClick={() => decreaseQty(item)}
+              onClick={() => decreaseQty(item.clientId)}
             >
               -
             </Button>
@@ -71,7 +77,7 @@ const CartItem = ({ item }) => {
               outline="none"
               _hover={{ bg: "white" }}
               _focus={{ outline: "transparent" }}
-              onClick={() => increaseQty(item)}
+              onClick={() => increaseQty(item.clientId)}
             >
               +
             </Button>

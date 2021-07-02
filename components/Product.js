@@ -31,6 +31,7 @@ const Product = ({ product }) => {
             minHeight="42px"
             bg="#4B5548"
             mt="0.5rem"
+            _focus={{ outline: "transparent" }}
             _hover={{ bg: "#2B2E2B" }}
             fontWeight="bold"
           >
