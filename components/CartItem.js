@@ -1,9 +1,10 @@
-import formatMoney from "../lib/formatMoney";
-import { useCartDispatch } from "../lib/cartContext";
 import { FaTimes } from "react-icons/fa";
+import formatMoney from "../lib/formatMoney";
+import { useCartDispatch, useCartState } from "../lib/cartContext";
 import { Box, Img, Button, Flex, Text, IconButton } from "@chakra-ui/react";
 
 const CartItem = ({ item }) => {
+  const { currency } = useCartState();
   const dispatch = useCartDispatch();
 
   const increaseQty = (cid) => {
@@ -85,7 +86,7 @@ const CartItem = ({ item }) => {
         </Flex>
         <Box alignSelf="flex-end">
           <Text fontSize="xl" fontWeight="normal" lineHeight="1.5">
-            {formatMoney(item.price * item.quantity)}
+            {formatMoney(item.price * item.quantity, currency)}
           </Text>
         </Box>
         <Box>

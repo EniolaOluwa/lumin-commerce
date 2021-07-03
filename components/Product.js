@@ -1,9 +1,10 @@
 import formatMoney from "../lib/formatMoney";
 import { Flex, Img, Text, Box, Button } from "@chakra-ui/react";
-import { useCartDispatch } from "../lib/cartContext";
+import { useCartDispatch, useCartState } from "../lib/cartContext";
 
 const Product = ({ product }) => {
   const dispatch = useCartDispatch();
+  const { currency } = useCartState();
   const showDetails = () => dispatch({ type: "show-product-details", product });
 
   return (
@@ -20,7 +21,7 @@ const Product = ({ product }) => {
           {product.title}
         </Text>
         <Text fontSize="1.1rem" lineHeight="1.5">
-          {formatMoney(product.price)}
+          {formatMoney(product.price, currency)}
         </Text>
         <Box>
           <Button

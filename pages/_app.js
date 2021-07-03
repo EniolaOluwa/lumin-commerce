@@ -1,12 +1,13 @@
 import { ApolloProvider } from "@apollo/client";
-import Page from "../components/Page";
+import Page, { theme, Fonts } from "../components/Page";
 import withData from "../lib/withData";
 import { CartProvider } from "../lib/cartContext";
 import { ChakraProvider } from "@chakra-ui/react";
 
 function MyApp({ Component, pageProps, apollo }) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
+      <Fonts />
       <ApolloProvider client={apollo}>
         <CartProvider>
           <Page>

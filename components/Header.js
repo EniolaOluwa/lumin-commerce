@@ -13,7 +13,6 @@ export default function Header() {
       color="black"
       position="sticky"
       top={0}
-      mb={12}
     >
       <Flex flexDirection="row" width="lg" justifyContent="space-between">
         <Box boxSize="xs" width="163px" height="44px" pl={4} pr={4}>
